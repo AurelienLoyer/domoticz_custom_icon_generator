@@ -4,7 +4,7 @@
 
 # Preview
 
-<img src="screenshots/screen1.png" width="500"/>
+<img src="screenshots/screen1.png"/>
 
 # TODO
 
