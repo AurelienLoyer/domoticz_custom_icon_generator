@@ -4,25 +4,51 @@
 
 // http://codepen.io/michaeljcalkins/pen/prhtG
 
-
 angular.module('app', ['ngImgCrop'])
 
   .controller('Ctrl', function($scope) {
 
-    $scope.myImage='';
-    $scope.myCroppedImage='';
+    $scope.iconName = ''
+    $scope.radiusValue = 0;
+    $scope.myImageOn='';
+    $scope.myImageOff='';
+    $scope.myCroppedImageOn='';
+    $scope.myCroppedImageOff='';
 
-    var handleFileSelect=function(evt) {
+    vm.radiusChange = radiusChange;
+
+    function radiusChange(){
+      if(!vm.activeRadius){
+        radiusValue = 0;
+      }
+    }
+
+
+    var handleFileSelectOn = function(evt) {
       var file=evt.currentTarget.files[0];
       var reader = new FileReader();
       reader.onload = function (evt) {
         $scope.$apply(function($scope){
-          $scope.myImage=evt.target.result;
+          console.log(evt);
+          $scope.myImageOn = evt.target.result;
         });
       };
       reader.readAsDataURL(file);
     };
 
-    angular.element(document.querySelector('#fileInput')).on('change',handleFileSelect);
+    var handleFileSelectOff = function(evt) {
+      var file=evt.currentTarget.files[0];
+      var reader = new FileReader();
+      reader.onload = function (evt) {
+        $scope.$apply(function($scope){
+          console.log(evt);
+          $scope.myImageOff = evt.target.result;
+        });
+      };
+      reader.readAsDataURL(file);
+    };
+
+    angular.element(document.querySelector('#fileInputOn')).on('change',handleFileSelectOn);
+    angular.element(document.querySelector('#fileInputOff')).on('change',handleFileSelectOff);
 
   });

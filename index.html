@@ -2,27 +2,89 @@
 <head>
 	<title>Domoticz custom ico generator</title>
 	<meta name="description" content="content">
+	<meta charset="UTF-8">
 
-	<link rel="stylesheet" type="text/css" href="ng-img-crop.css">
+	<link rel="stylesheet" type="text/css" href="css/ng-img-crop.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/material.css">
+	<link rel="stylesheet" type="text/css" href="css/app.css">
 
 	<script src="lib/angular.min.js"></script>
-	<script src="ng-img-crop.js"></script>
 	<script src="lib/base64.js"></script>
 	<script src="lib/canvas2image.min.js"></script>
 	<script src="lib/html2canvas.js"></script>
+
+	<script src="js/ng-img-crop.js"></script>
 	<script src="js/app.js"></script>
 
 </head>
 <body ng-app="app" ng-controller="Ctrl">
 
-	<div>Select an image file: <input type="file" id="fileInput" /></div>
+	<header>
+		<img src="img/domoticz-150x150.png" alt="" style="border-radius:50%;" />
+		<h1>Domoticz <span>Custom icon generator</span></h1>
+	</header>
 
-	<div class="cropArea">
-		<img-crop image="myImage" result-image="myCroppedImage"></img-crop>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12">
+				<h2><em>1.</em> Nom de l'icone</h2>
+				<input type="text" name="name" ng-model="iconName">
+			</div>
+			<div class="col-sm-6">
+				<h2><em>2.1</em> Bouton On</h2>
+
+				<div>Select an image file: <input type="file" id="fileInputOn" /></div>
+
+				<div class="cropArea">
+					<img-crop image="myImageOn" result-image="myCroppedImageOn"></img-crop>
+				</div>
+
+			</div>
+			<div class="col-sm-6">
+				<h2><em>2.2</em> Bouton Off</h2>
+
+				<div>Select an image file: <input type="file" id="fileInputOff" /></div>
+
+				<div class="cropArea">
+					<img-crop image="myImageOff" result-image="myCroppedImageOff"></img-crop>
+				</div>
+
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-6">
+				<h2>Aperçu Bouton On</h2>
+
+				<div class="result_On">
+					<div class="title">{{iconName}} On</div>
+					<div class="image"><img style="{{borderRadius}}" ng-src="{{myCroppedImageOn}}" alt="" /></div>
+				</div>
+			</div>
+			<div class="col-sm-6">
+				<h2>Aperçu Bouton Off</h2>
+
+				<div class="result_Off">
+					<div class="title">{{iconName}} Off</div>
+					<div class="image"><img style="{{borderRadius}}" ng-src="{{myCroppedImageOff}}" alt="" /></div>
+				</div>
+			</div>
+
+			<div class="col-sm-6 col-sm-offset-3">
+				<h2><em>3.</em> Réglage de l'image</h2>
+				<h3>Bord arrondi</h3>
+				<input type="checkbox" name="name" ng-model="activeRadius" ng-change="radiusChange" id="activeRadius"><label for="activeRadius">Bord arrondi de {{radiusValue}}%</label><br>
+				<input type="range" min="0" max="50" step="5" ng-show="activeRadius" ng-model="radiusValue">
+			</div>
+
+			<div class="col-sm-12">
+				<h2><em>4.</em> Pour finir</h2>
+				<button type="button" class="btn btn-success">Générer le zip</button>
+			</div>
+		</div>
 	</div>
 
-	<div>Cropped Image:</div>
-	<div><img ng-src="{{myCroppedImage}}" /></div>
+	<footer></footer>
 
 </body>
 </html>

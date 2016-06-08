@@ -1,0 +1,75 @@
+body,html{
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+h2{
+  margin: 30px;
+}
+
+h2 em{
+  background-color: #67A1DD;
+  color: white;
+  width: 55px;
+  display: inline-block;
+  font-size: 20px;
+  line-height: 40px;
+}
+
+.cropArea {
+  margin: 20px auto;
+  background: #E4E4E4;
+  overflow: hidden;
+  width:500px;
+  height:350px;
+}
+
+.result_On,.result_Off{
+  width: 390px;
+  height: 130px;
+  margin: 20px auto;
+  position: relative;
+}
+
+.result_On{
+  background-image: url('../img/result_On.png');
+}
+.result_Off{
+  background-image: url('../img/result_Off.png');
+}
+
+.result_On .title,.result_Off .title{
+  background-color: #D4E1ED;
+  width: 300px;
+  height: 20px;
+  top: 12px;
+  display: block;
+  text-align: left;
+  position: absolute;
+  left: 20px;
+  font-weight: bold;
+}
+
+.result_On .image,.result_Off .image{
+  width: 50px;
+  height: 50px;
+  background-color: #F2F1FA;
+  background-size: cover;
+  position: absolute;
+  top: 37px;
+  left: 12px;
+  text-align: center;
+}
+
+.result_On .image img,.result_Off .image img{
+  width: 48px;
+  height: 48px;
+}
+
+footer{
+  margin-top: 50px;
+  padding:50px;
+  width: 100%;
+  background: #67A1DD;
+}
