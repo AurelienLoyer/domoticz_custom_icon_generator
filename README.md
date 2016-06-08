@@ -1,0 +1,1 @@
+# domoticz_custom_icon_generator
