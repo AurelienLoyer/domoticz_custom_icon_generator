@@ -6,9 +6,11 @@ body,html{
 
 h2{
   margin: 30px;
+  text-align: left;
 }
 
 h2 em{
+  text-align: center;
   background-color: #67A1DD;
   color: white;
   width: 55px;
@@ -60,11 +62,21 @@ h2 em{
   top: 37px;
   left: 12px;
   text-align: center;
+  overflow: hidden;
+}
+.result_On .image > div,.result_Off .image > div{
+  overflow: hidden;
+  width: 48px;
+  height: 48px;
 }
 
 .result_On .image img,.result_Off .image img{
   width: 48px;
   height: 48px;
+}
+
+.preview_bloc h2{
+  text-align: center;
 }
 
 footer{
