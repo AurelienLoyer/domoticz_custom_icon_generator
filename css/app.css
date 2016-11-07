@@ -85,3 +85,13 @@ footer{
   width: 100%;
   background: #67A1DD;
 }
+
+footer .icons{
+  margin-bottom: 30px;
+  font-size: 3.5em;
+}
+
+footer .icons a{
+  text-decoration: none;
+  padding: 0 20px;
+}

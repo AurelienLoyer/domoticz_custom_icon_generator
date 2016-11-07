@@ -21,6 +21,17 @@ angular
   .controller('generatorController', generatorController);
 
 
+/*ANALYTICS INTEGRATION*/
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-79225266-1']);
+_gaq.push(['_trackPageview']);
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = 'https://ssl.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+
+
 
 function generatorController($scope,toastr,$translate,$location){
 
@@ -98,6 +109,8 @@ function generatorController($scope,toastr,$translate,$location){
       if(!vm.iconName){ toastr.error('Nom du bouton manquant', 'Erreur'); }
       if(!vm.myImageOff || !vm.myImageOn || !vm.iconName){ return; }
 
+      _gaq.push(['_trackEvent', 'zip', vm.iconName]);
+
       var w = 48;
       var h = 48;
 
@@ -171,7 +184,7 @@ function toDataUrl(url, callback, outputFormat){
         canvas.width = this.width;
         ctx.drawImage(this, 0, 0);
         dataURL = canvas.toDataURL(outputFormat);
-        callback(dataURL);
+        //callback(dataURL);
         canvas = null;
     };
     img.src = url;
