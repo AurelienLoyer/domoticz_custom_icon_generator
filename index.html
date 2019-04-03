@@ -2,7 +2,8 @@
 
 <head>
 	<title>🤖 🆒 Domoticz custom icon generator</title>
-	<meta name="description" content="🤖 🆒 Domoticz custom icon generator, help people to generate custom icon, resize image, crop and generate zip folder for domoticz">
+	<meta name="description"
+		content="🤖 🆒 Domoticz custom icon generator, help people to generate custom icon, resize image, crop and generate zip folder for domoticz">
 	<meta charset="UTF-8">
 
 	<link rel="stylesheet" type="text/css" href="css/ng-img-crop.css">
@@ -10,7 +11,7 @@
 	<link rel="stylesheet" type="text/css" href="css/angular-toastr.css" />
 	<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
 	<link rel="stylesheet" type="text/css"
-		href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+		href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
 	<link rel="stylesheet" type="text/css" href="css/app.css">
 
 	<script type="text/javascript" src="lib/angular.min.js"></script>
@@ -37,8 +38,8 @@
 		</a>
 		<h1>Domoticz <span>Custom icon generator</span></h1>
 		<div class="settings">
-			<a href="#" ng-click="gen.changeLanguage('en')"><img class="flag"
-					src="img/united_states-national-world.svg" alt="fr flag"></a>
+			<a href="#" ng-click="gen.changeLanguage('en')"><img class="flag" src="img/united_states-national-world.svg"
+					alt="fr flag"></a>
 			<a href="#" ng-click="gen.changeLanguage('fr')"><img class="flag" src="img/france-national-world.svg"
 					alt="en flag"></a>
 		</div>
@@ -47,10 +48,13 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-12 description" translate="DESCRIPTION">
-					🤖 🆒 Domoticz custom icon generator, help people to generate custom icon, resize image, crop image 🔪, and generate zip folder 📦 to have amazing 🎉 icons in Domoticz app. 
-					If you want to contribute to this project: <a target="_blank" href="https://github.com/T3kstiil3/domoticz_custom_icon_generator">Github 🐙</a> or contact me on <a target="_blank" href="https://twitter.com/AurelienLoyer">Twitter 🐦</a>
-					
-					<br><br> Enjoy 🤩
+				🤖 🆒 Domoticz custom icon generator, help people to generate custom icon, resize image, crop image 🔪,
+				and generate zip folder 📦 to have amazing 🎉 icons in Domoticz app.
+				If you want to contribute to this project: <a target="_blank"
+					href="https://github.com/T3kstiil3/domoticz_custom_icon_generator">Github 🐙</a> or contact me on <a
+					target="_blank" href="https://twitter.com/AurelienLoyer">Twitter 🐦</a>
+
+				<br><br> Enjoy 🤩
 			</div>
 		</div>
 	</div>
@@ -85,7 +89,7 @@
 		<div class="row">
 			<div class="col-sm-6 preview_bloc">
 				<h2>{{'PREVIEW_BUTTON_ON' | translate}}</h2>
-				
+
 				<div class="result_On">
 					<div class="title">{{gen.iconName}} On</div>
 					<div class="image" id="imageOnU">
@@ -110,8 +114,8 @@
 			</div>
 
 			<div class="col-sm-12">
-				<h2><em>3.</em> Réglage de l'image</h2>
-				<p>En développement (Bord arrondi,Bordure...)</p>
+				<h2><em>3.</em> <span translate="IMAGE_SETTINGS">Image settings</span></h2>
+				<p translate="WORK_IN_PROGRESS">Work in progress (Border radius,Border...)</p>
 				<div class="row" ng-if="0">
 					<div class="col-sm-6">
 						<h3>Bord arrondi</h3>
@@ -135,12 +139,12 @@
 			</div>
 
 			<div class="col-sm-12">
-				<h2><em>4.</em> Pour finir</h2>
-				<button ng-click="gen.zip()" type="button" class="btn btn-success">Générer le zip</button>
+				<h2><em>4.</em> <span translate="FINISH">To finish</span></h2>
+				<button ng-click="gen.zip()" type="button" class="btn btn-success" translate="GENERATE_ZIP">Generate zip</button>
 			</div>
 
 			<div class="col-sm-12" ng-if="gen.local">
-				<h2><em>5.</em> Rendu canvas</h2>
+				<h2><em>5.</em> <span translate="CANVAS">Canvas demo</span></h2>
 				<div id="zonetest">
 
 				</div>
@@ -163,11 +167,14 @@
 			</a>
 		</div>
 
-		<div class="copyright">
-			<i class="fa fa-code" aria-hidden="true"></i> with <i class="fa fa-heart" aria-hidden="true"></i> by <a target="_blank" href="https://twitter.com/AurelienLoyer">Aurélien Loyer</a>
-		</div>
-
 	</footer>
+
+	<div class="footer-fix">
+		<div class="copyright">
+			<i class="fa fa-code" aria-hidden="true" title="code"></i> with <i class="fa fa-heart" title="love" aria-hidden="true"></i> by <a
+				target="_blank" href="https://twitter.com/AurelienLoyer">Aurélien Loyer</a>
+		</div>
+	</div>
 
 	<!-- Place this tag in your head or just before your close body tag. -->
 	<!-- <script async defer src="https://buttons.github.io/buttons.js"></script> -->
