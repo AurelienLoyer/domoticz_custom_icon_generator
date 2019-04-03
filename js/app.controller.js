@@ -1,9 +1,3 @@
-// https://github.com/alexk111/ngImgCrop
-
-// http://jsfiddle.net/alexk111/rw6q9/
-
-// http://codepen.io/michaeljcalkins/pen/prhtG
-
 angular
   .module('app', ['ngImgCrop','ngAnimate', 'toastr','pascalprecht.translate'])
   .config(function(toastrConfig) {
@@ -18,20 +12,10 @@ angular
       target: 'body'
     });
   })
+  .config(['$translateProvider', function ($translateProvider) {
+    addTranslateConfig($translateProvider);
+  }])
   .controller('generatorController', generatorController);
-
-
-/*ANALYTICS INTEGRATION*/
-var _gaq = _gaq || [];
-_gaq.push(['_setAccount', 'UA-79225266-1']);
-_gaq.push(['_trackPageview']);
-(function() {
-  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-  ga.src = 'https://ssl.google-analytics.com/ga.js';
-  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-})();
-
-
 
 function generatorController($scope,toastr,$translate,$location){
 
@@ -57,8 +41,15 @@ function generatorController($scope,toastr,$translate,$location){
       vm.local = true;
     }
 
+    let preferedLang = localStorage.getItem('preferedLang');
+    if(preferedLang) {
+      $translate.use(preferedLang);
+    }
+
     function changeLanguage(key){
+      console.log(key);
       $translate.use(key);
+      localStorage.setItem('preferedLang', key)
     }
 
     function radiusChange() {
@@ -172,7 +163,6 @@ function generatorController($scope,toastr,$translate,$location){
     }
 }
 
-
 function toDataUrl(url, callback, outputFormat){
     var img = new Image();
     img.crossOrigin = 'Anonymous';
@@ -189,3 +179,14 @@ function toDataUrl(url, callback, outputFormat){
     };
     img.src = url;
 }
+
+/* ANALYTICS INTEGRATION */
+
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-79225266-1']);
+_gaq.push(['_trackPageview']);
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = 'https://ssl.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();

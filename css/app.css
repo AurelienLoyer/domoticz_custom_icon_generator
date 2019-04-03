@@ -1,7 +1,46 @@
+:root {
+  --main-bg-color: #673AB7;
+  --second-bg-color: rgb(75, 34, 148);
+}
+
 body,html{
   margin: 0;
   padding: 0;
   text-align: center;
+  font-family: 'Varela Round', sans-serif;
+}
+
+.description {
+  padding: 50px 18%;
+  font-size: 1.2em;
+}
+
+header {
+  background-color: var(--main-bg-color);
+  height: 50px;
+  display: flex;
+  color: white;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 2%; 
+}
+
+header .logo {
+  height: 80%;
+  border: 2px solid white;
+}
+
+header h1 {
+  font-size: 1.5em;
+}
+
+.settings .flag {
+  transition: all 0.2s;
+  height: 50px;
+}
+
+.settings .flag:hover{
+  transform: scale(1.1);
 }
 
 h2{
@@ -11,7 +50,7 @@ h2{
 
 h2 em{
   text-align: center;
-  background-color: #67A1DD;
+  background-color: var(--main-bg-color);
   color: white;
   width: 55px;
   display: inline-block;
@@ -75,23 +114,53 @@ h2 em{
   height: 48px;
 }
 
+.btn-success {
+  background: var(--main-bg-color);
+}
+
+.btn-success:hover {
+  background: var(--second-bg-color);
+}
+
 .preview_bloc h2{
   text-align: center;
 }
 
 footer{
-  margin-top: 50px;
-  padding:50px;
+  color: white;
+  margin-top: 100px;
+  padding:35px;
   width: 100%;
-  background: #67A1DD;
+  background: var(--main-bg-color);
 }
 
 footer .icons{
   margin-bottom: 30px;
-  font-size: 3.5em;
+  font-size: 2.5em;
 }
 
 footer .icons a{
   text-decoration: none;
   padding: 0 20px;
+  color: white;
+}
+
+footer .icons i{
+  transition: all 0.2s;
+}
+
+footer .icons i:hover{
+  transform: scale(1.2);
+}
+
+.copyright .fa-heart {
+  color: red;
+}
+
+.copyright a {
+  color: black;
+}
+
+.copyright i {
+  padding: 0px 5px;
 }

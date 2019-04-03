@@ -1,13 +1,16 @@
 <html>
+
 <head>
-	<title>Domoticz custom ico generator</title>
-	<meta name="description" content="content">
+	<title>🤖 🆒 Domoticz custom icon generator</title>
+	<meta name="description" content="🤖 🆒 Domoticz custom icon generator, help people to generate custom icon, resize image, crop and generate zip folder for domoticz">
 	<meta charset="UTF-8">
 
 	<link rel="stylesheet" type="text/css" href="css/ng-img-crop.css">
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="css/angular-toastr.css" />
-	<link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+	<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+	<link rel="stylesheet" type="text/css"
+		href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
 	<link rel="stylesheet" type="text/css" href="css/app.css">
 
 	<script type="text/javascript" src="lib/angular.min.js"></script>
@@ -22,28 +25,47 @@
 	<script type="text/javascript" src="lib/jszip.min.js"></script>
 
 	<script src="js/ng-img-crop.js"></script>
-	<script src="js/translateConfig.config.js"></script>
+	<script src="js/translate.config.js"></script>
 	<script src="js/app.controller.js"></script>
 
 </head>
+
 <body ng-app="app" ng-controller="generatorController as gen">
 
 	<header>
-		<img src="img/domoticz-150x150.png" alt="" style="border-radius:50%;" />
+		<a href="/">
+			<img class="logo" src="img/domoticz-150x150.png" alt="" style="border-radius:50%;" />
+		</a>
 		<h1>Domoticz <span>Custom icon generator</span></h1>
-		<a style="display:none;" ng-click="gen.changeLanguage('en')">Switch to EN</a> <a style="display:none;" ng-click="gen.changeLanguage('fr')">Switch to FR</a>
+		<div class="settings">
+			<a href="#" ng-click="gen.changeLanguage('en')"><img class="flag"
+					src="img/united_states-national-world.svg" alt="fr flag"></a>
+			<a href="#" ng-click="gen.changeLanguage('fr')"><img class="flag" src="img/france-national-world.svg"
+					alt="en flag"></a>
+		</div>
 	</header>
 
 	<div class="container">
 		<div class="row">
+			<div class="col-sm-12 description" translate="DESCRIPTION">
+					🤖 🆒 Domoticz custom icon generator, help people to generate custom icon, resize image, crop image 🔪, and generate zip folder 📦 to have amazing 🎉 icons in Domoticz app. 
+					If you want to contribute to this project: <a target="_blank" href="https://github.com/T3kstiil3/domoticz_custom_icon_generator">Github 🐙</a> or contact me on <a target="_blank" href="https://twitter.com/AurelienLoyer">Twitter 🐦</a>
+					
+					<br><br> Enjoy 🤩
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="row">
 			<div class="col-sm-12">
-				<h2><em>1.</em> Nom de l'icone</h2>
+				<h2><em>1.</em> {{'ICONE_NAME' | translate}}</h2>
 				<input type="text" name="name" ng-model="gen.iconName">
 			</div>
 			<div class="col-sm-6">
-				<h2><em>2.1</em> Bouton On</h2>
+				<h2><em>2.1</em> {{'BUTTON_ON' | translate}}</h2>
 
-				<div>Select an image file: <input type="file" id="fileInputOn" /></div>
+				<div>{{'SELECT_IMAGE' | translate}}: <input type="file" id="fileInputOn" /></div>
 
 				<div class="cropArea">
 					<img-crop image="gen.myImageOn" result-image="gen.myCroppedImageOn"></img-crop>
@@ -51,9 +73,9 @@
 
 			</div>
 			<div class="col-sm-6">
-				<h2><em>2.2</em> Bouton Off</h2>
+				<h2><em>2.2</em> {{'BUTTON_OFF' | translate}}</h2>
 
-				<div>Select an image file: <input type="file" id="fileInputOff" /></div>
+				<div>{{'SELECT_IMAGE' | translate}}: <input type="file" id="fileInputOff" /></div>
 
 				<div class="cropArea">
 					<img-crop image="gen.myImageOff" result-image="gen.myCroppedImageOff"></img-crop>
@@ -63,11 +85,11 @@
 		</div>
 		<div class="row">
 			<div class="col-sm-6 preview_bloc">
-				<h2>Aperçu Bouton On</h2>
-
+				<h2>{{'PREVIEW_BUTTON_ON' | translate}}</h2>
+				
 				<div class="result_On">
 					<div class="title">{{gen.iconName}} On</div>
-					<div class="image" id="imageOnU" >
+					<div class="image" id="imageOnU">
 						<div style="border-radius:{{gen.radiusValue*48/100}}px;{{gen.border}}" class="">
 							<img ng-src="{{gen.myCroppedImageOn}}" alt="" />
 						</div>
@@ -75,11 +97,11 @@
 				</div>
 			</div>
 			<div class="col-sm-6 preview_bloc">
-				<h2>Aperçu Bouton Off</h2>
+				<h2>{{'PREVIEW_BUTTON_OFF' | translate}}</h2>
 
 				<div class="result_Off">
 					<div class="title">{{gen.iconName}} Off</div>
-					<div class="image" id="imageOffU" >
+					<div class="image" id="imageOffU">
 						<div style="border-radius:{{gen.radiusValue*48/100}}px;{{gen.border}}" class="">
 							<img ng-src="{{gen.myCroppedImageOff}}" alt="" />
 						</div>
@@ -94,13 +116,20 @@
 				<div class="row" ng-if="0">
 					<div class="col-sm-6">
 						<h3>Bord arrondi</h3>
-						<input type="checkbox" name="name" ng-model="gen.activeRadius" ng-change="gen.radiusChange()" id="activeRadius"> <label for="activeRadius">Bord arrondi de {{gen.radiusValue}}%</label><br>
-						<input type="range" min="0" max="50" step="5" ng-show="gen.activeRadius" ng-model="gen.radiusValue">
+						<input type="checkbox" name="name" ng-model="gen.activeRadius" ng-change="gen.radiusChange()"
+							id="activeRadius"> <label for="activeRadius">Bord arrondi de
+							{{gen.radiusValue}}%</label><br>
+						<input type="range" min="0" max="50" step="5" ng-show="gen.activeRadius"
+							ng-model="gen.radiusValue">
 					</div>
 					<div class="col-sm-6">
 						<h3>Contour de l'image</h3>
-						<input type="checkbox" name="name" ng-model="gen.activeBorder" ng-change="gen.borderChange()" id="activeBorder"> <label for="activeBorder">Bordure <input type="color" name="favcolor" value="{{gen.borderColor}}" ng-model="gen.borderColor" ng-change="gen.borderChange()"> de {{gen.borderSize}}px</label><br>
-						<input type="range" min="0" max="10" step="1" ng-show="gen.activeBorder" ng-change="gen.borderChange()" ng-model="gen.borderSize">
+						<input type="checkbox" name="name" ng-model="gen.activeBorder" ng-change="gen.borderChange()"
+							id="activeBorder"> <label for="activeBorder">Bordure <input type="color" name="favcolor"
+								value="{{gen.borderColor}}" ng-model="gen.borderColor" ng-change="gen.borderChange()">
+							de {{gen.borderSize}}px</label><br>
+						<input type="range" min="0" max="10" step="1" ng-show="gen.activeBorder"
+							ng-change="gen.borderChange()" ng-model="gen.borderSize">
 						{{gen.border}}
 					</div>
 				</div>
@@ -114,7 +143,7 @@
 			<div class="col-sm-12" ng-if="gen.local">
 				<h2><em>5.</em> Rendu canvas</h2>
 				<div id="zonetest">
-					
+
 				</div>
 			</div>
 
@@ -124,34 +153,26 @@
 	<footer>
 
 		<div class="icons">
-			<a href="https://twitter.com/AurelienLoyer">
-				<i class="fa fa-twitter" aria-hidden="true"></i>
+			<a target="_blank" href="https://twitter.com/AurelienLoyer">
+				<i class="fa fa-twitter-square" aria-hidden="true"></i>
 			</a>
-			<a href="https://github.com/T3kstiil3">
-				<i class="fa fa-github" aria-hidden="true"></i>
+			<a target="_blank" href="https://github.com/T3kstiil3">
+				<i class="fa fa-github-square" aria-hidden="true"></i>
 			</a>
-			<a href="http://aurelien-loyer.fr">
-				<i class="fa fa-user" aria-hidden="true"></i>
+			<a target="_blank" href="http://aurelien-loyer.fr">
+				<i class="fa fa-envelope-square" aria-hidden="true"></i>
 			</a>
 		</div>
 
-		<div class="github_button">
-			<h4>Participer au développement de cette application</h4>
-
-			<!-- Place this tag where you want the button to render. -->
-			<a class="github-button" href="https://github.com/t3kstiil3" data-count-href="/t3kstiil3/followers" data-count-api="/users/t3kstiil3#followers" data-count-aria-label="# followers on GitHub" aria-label="Follow @t3kstiil3 on GitHub">Follow @t3kstiil3</a>
-			<!-- Place this tag where you want the button to render. -->
-			<a class="github-button" href="https://github.com/t3kstiil3/domoticz_custom_icon_generator" data-icon="octicon-star" data-count-href="/t3kstiil3/domoticz_custom_icon_generator/stargazers" data-count-api="/repos/t3kstiil3/domoticz_custom_icon_generator#stargazers_count" data-count-aria-label="# stargazers on GitHub" aria-label="Star t3kstiil3/domoticz_custom_icon_generator on GitHub">Star</a>
-			<!-- Place this tag where you want the button to render. -->
-			<a class="github-button" href="https://github.com/t3kstiil3/domoticz_custom_icon_generator/fork" data-icon="octicon-repo-forked" data-count-href="/t3kstiil3/domoticz_custom_icon_generator/network" data-count-api="/repos/t3kstiil3/domoticz_custom_icon_generator#forks_count" data-count-aria-label="# forks on GitHub" aria-label="Fork t3kstiil3/domoticz_custom_icon_generator on GitHub">Fork</a>
-			<!-- Place this tag where you want the button to render. -->
-			<a class="github-button" href="https://github.com/t3kstiil3/domoticz_custom_icon_generator/issues" data-icon="octicon-issue-opened" data-count-api="/repos/t3kstiil3/domoticz_custom_icon_generator#open_issues_count" data-count-aria-label="# issues on GitHub" aria-label="Issue t3kstiil3/domoticz_custom_icon_generator on GitHub">Issue</a>
+		<div class="copyright">
+			<i class="fa fa-code" aria-hidden="true"></i> with <i class="fa fa-heart" aria-hidden="true"></i> by <a target="_blank" href="https://twitter.com/AurelienLoyer">Aurélien Loyer</a>
 		</div>
 
 	</footer>
 
 	<!-- Place this tag in your head or just before your close body tag. -->
-	<script async defer src="https://buttons.github.io/buttons.js"></script>
+	<!-- <script async defer src="https://buttons.github.io/buttons.js"></script> -->
 
 </body>
+
 </html>
