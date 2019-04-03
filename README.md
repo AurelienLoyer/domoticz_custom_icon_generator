@@ -1,16 +1,13 @@
-# domoticz_custom_icon_generator
+# 🤖 🆒 Domoticz custom icon generator
 
-[Demo version en ligne](http://domoticz-icon.aurelien-loyer.fr/)
+## [Demo](http://domoticz-icon.aurelien-loyer.fr/)
 
 # Description
 
-Depuis quelques temps déjà, nous pouvons ajouter nos propres jeux d’icônes pour des interrupteurs Domoticz.
+🤖 🆒 Domoticz custom icon generator, help people to generate custom icon, resize image, crop image 🔪, and generate zip folder 📦 to have amazing 🎉 icons in Domoticz app. 
+If you want to contribute to this project: <a target="_blank" href="https://github.com/T3kstiil3/domoticz_custom_icon_generator">Github 🐙</a> or contact me on <a target="_blank" href="https://twitter.com/AurelienLoyer">Twitter 🐦</a>
 
-La version 2215 apporte maintenant un outil pour déployer des jeux d’icônes différemment par le biais d’un fichier Zip contenant l’ensemble des fichiers nécessaires.
-
-Par contre, cette phase impose la construction d'un fichier contenant les images et certaines informations.
-
-Cet outil permet de faciliter cette phase de construction !
+ Enjoy 🤩
 
 # Preview
 
@@ -21,7 +18,7 @@ Cet outil permet de faciliter cette phase de construction !
 - [x] Integrate AngularJs
 - [x] Convert Div -> Canvas -> image/png
 - [x] Zip all files
-- [ ] Multi Language
+- [x] Multi Language
 - [ ] Image custom (border,border-radius)
 - [ ] Image blur
 - [ ] Resolve Bug Retina
