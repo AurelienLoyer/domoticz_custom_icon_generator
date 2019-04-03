@@ -114,8 +114,8 @@
 			</div>
 
 			<div class="col-sm-12">
-				<h2><em>3.</em> Réglage de l'image</h2>
-				<p>En développement (Bord arrondi,Bordure...)</p>
+				<h2><em>3.</em> <span translate="IMAGE_SETTINGS">Image settings</span></h2>
+				<p translate="WORK_IN_PROGRESS">Work in progress (Border radius,Border...)</p>
 				<div class="row" ng-if="0">
 					<div class="col-sm-6">
 						<h3>Bord arrondi</h3>
@@ -139,12 +139,12 @@
 			</div>
 
 			<div class="col-sm-12">
-				<h2><em>4.</em> Pour finir</h2>
-				<button ng-click="gen.zip()" type="button" class="btn btn-success">Générer le zip</button>
+				<h2><em>4.</em> <span translate="FINISH">To finish</span></h2>
+				<button ng-click="gen.zip()" type="button" class="btn btn-success" translate="GENERATE_ZIP">Generate zip</button>
 			</div>
 
 			<div class="col-sm-12" ng-if="gen.local">
-				<h2><em>5.</em> Rendu canvas</h2>
+				<h2><em>5.</em> <span translate="CANVAS">Canvas demo</span></h2>
 				<div id="zonetest">
 
 				</div>
@@ -171,7 +171,7 @@
 
 	<div class="footer-fix">
 		<div class="copyright">
-			<i class="fa fa-code" aria-hidden="true"></i> with <i class="fa fa-heart" aria-hidden="true"></i> by <a
+			<i class="fa fa-code" aria-hidden="true" title="code"></i> with <i class="fa fa-heart" title="love" aria-hidden="true"></i> by <a
 				target="_blank" href="https://twitter.com/AurelienLoyer">Aurélien Loyer</a>
 		</div>
 	</div>
