@@ -62,6 +62,10 @@ h2 em{
   line-height: 40px;
 }
 
+input[type="text"] {
+  border: 3px solid var(--main-bg-color);
+}
+
 .cropArea {
   margin: 20px auto;
   background: #E4E4E4;
