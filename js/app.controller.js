@@ -100,7 +100,10 @@ function generatorController($scope,toastr,$translate,$location){
       if(!vm.iconName){ toastr.error('Nom du bouton manquant', 'Erreur'); }
       if(!vm.myImageOff || !vm.myImageOn || !vm.iconName){ return; }
 
-      _gaq.push(['_trackEvent', 'zip', vm.iconName]);
+
+      gtag('event', 'zip', {
+        'icon_name': vm.iconName,
+      });
 
       var w = 48;
       var h = 48;
