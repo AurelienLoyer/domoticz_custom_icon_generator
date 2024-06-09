@@ -16,9 +16,9 @@
           src="assets/united_states-national-world.svg"
           alt="fr flag"
       /></a>
-      <a href="#" ng-click="gen.changeLanguage('fr')"
+      <!-- <a href="#" ng-click="gen.changeLanguage('fr')"
         ><img class="flag" src="assets/france-national-world.svg" alt="en flag"
-      /></a>
+      /></a> -->
     </div>
   </header>
 
@@ -51,7 +51,7 @@
       <div class="col-sm-12">
         <!-- <h2><em>1.</em> {{ "ICONE_NAME" | translate }}</h2> -->
         <h2><em>1.</em> Icon name</h2>
-        <input type="text" name="name" ng-model="gen.iconName" />
+        <input type="text" name="name" [(ngModel)]="iconName" />
       </div>
       <div class="col-sm-6">
         <!-- <h2><em>2.1</em> {{ "BUTTON_ON" | translate }}</h2> -->
@@ -60,7 +60,11 @@
         <div>
           <!-- {{ "SELECT_IMAGE" | translate }}: -->
           Select an image file:
-          <input type="file" id="fileInputOn" />
+          <input
+            type="file"
+            id="fileInputOn"
+            (change)="fileChangeEvent($event, 'on')"
+          />
         </div>
 
         <div class="cropArea">
@@ -68,6 +72,18 @@
             image="gen.myImageOn"
             result-image="gen.myCroppedImageOn"
           ></img-crop> -->
+          <image-cropper
+            [imageChangedEvent]="imageOnChangedEvent"
+            [maintainAspectRatio]="true"
+            [aspectRatio]="1"
+            [resizeToWidth]="48"
+            [resizeToHeight]="48"
+            format="png"
+            (imageCropped)="imageCropped($event, 'on')"
+            (imageLoaded)="imageLoaded($event)"
+            (cropperReady)="cropperReady()"
+            (loadImageFailed)="loadImageFailed()"
+          ></image-cropper>
         </div>
       </div>
       <div class="col-sm-6">
@@ -77,7 +93,11 @@
         <div>
           <!-- {{ "SELECT_IMAGE" | translate }}: -->
           Select an image file:
-          <input type="file" id="fileInputOff" />
+          <input
+            type="file"
+            id="fileInputOn"
+            (change)="fileChangeEvent($event, 'off')"
+          />
         </div>
 
         <div class="cropArea">
@@ -85,6 +105,18 @@
             image="gen.myImageOff"
             result-image="gen.myCroppedImageOff"
           ></img-crop> -->
+          <image-cropper
+            [imageChangedEvent]="imageOffChangedEvent"
+            [maintainAspectRatio]="true"
+            [aspectRatio]="1"
+            [resizeToWidth]="48"
+            [resizeToHeight]="48"
+            format="png"
+            (imageCropped)="imageCropped($event, 'off')"
+            (imageLoaded)="imageLoaded($event)"
+            (cropperReady)="cropperReady()"
+            (loadImageFailed)="loadImageFailed()"
+          ></image-cropper>
         </div>
       </div>
     </div>
@@ -99,6 +131,7 @@
                 gen.border
               }}" -->
             <div>
+              <img *ngIf="croppedImageOn" [src]="croppedImageOn" />
               <!-- <img ng-src="{{ gen.myCroppedImageOn }}" alt="" /> -->
             </div>
           </div>
@@ -114,13 +147,14 @@
                 gen.border
               }}" -->
             <div>
+              <img *ngIf="croppedImageOff" [src]="croppedImageOff" />
               <!-- <img ng-src="{{ gen.myCroppedImageOff }}" alt="" /> -->
             </div>
           </div>
         </div>
       </div>
 
-      <div class="col-sm-12">
+      <div class="col-sm-12" *ngIf="0">
         <h2>
           <em>3.</em> <span translate="IMAGE_SETTINGS">Image settings</span>
         </h2>
@@ -184,20 +218,15 @@
       </div>
 
       <div class="col-sm-12">
-        <h2><em>4.</em> <span translate="FINISH">To finish</span></h2>
+        <h2><em>3.</em> <span translate="FINISH">To finish</span></h2>
         <button
-          ng-click="gen.zip()"
+          (click)="zip()"
           type="button"
           class="btn btn-success"
           translate="GENERATE_ZIP"
         >
           Generate zip
         </button>
-      </div>
-
-      <div class="col-sm-12" ng-if="gen.local">
-        <h2><em>5.</em> <span translate="CANVAS">Canvas demo</span></h2>
-        <div id="zonetest"></div>
       </div>
     </div>
   </div>
