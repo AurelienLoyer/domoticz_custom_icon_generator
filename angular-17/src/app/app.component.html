@@ -53,107 +53,15 @@
         <h2><em>1.</em> Icon name</h2>
         <input type="text" name="name" [(ngModel)]="iconName" />
       </div>
-      <div class="col-sm-6">
-        <!-- <h2><em>2.1</em> {{ "BUTTON_ON" | translate }}</h2> -->
-        <h2><em>2.1</em> ON Button</h2>
-
-        <div>
-          <!-- {{ "SELECT_IMAGE" | translate }}: -->
-          Select an image file:
-          <input
-            type="file"
-            id="fileInputOn"
-            (change)="fileChangeEvent($event, 'on')"
-          />
-        </div>
-
-        <div class="cropArea">
-          <!-- <img-crop
-            image="gen.myImageOn"
-            result-image="gen.myCroppedImageOn"
-          ></img-crop> -->
-          <image-cropper
-            [imageChangedEvent]="imageOnChangedEvent"
-            [maintainAspectRatio]="true"
-            [aspectRatio]="1"
-            [resizeToWidth]="48"
-            [resizeToHeight]="48"
-            format="png"
-            (imageCropped)="imageCropped($event, 'on')"
-            (imageLoaded)="imageLoaded($event)"
-            (cropperReady)="cropperReady()"
-            (loadImageFailed)="loadImageFailed()"
-          ></image-cropper>
-        </div>
-      </div>
-      <div class="col-sm-6">
-        <!-- <h2><em>2.2</em> {{ "BUTTON_OFF" | translate }}</h2> -->
-        <h2><em>2.2</em> OFF Button</h2>
-
-        <div>
-          <!-- {{ "SELECT_IMAGE" | translate }}: -->
-          Select an image file:
-          <input
-            type="file"
-            id="fileInputOn"
-            (change)="fileChangeEvent($event, 'off')"
-          />
-        </div>
-
-        <div class="cropArea">
-          <!-- <img-crop
-            image="gen.myImageOff"
-            result-image="gen.myCroppedImageOff"
-          ></img-crop> -->
-          <image-cropper
-            [imageChangedEvent]="imageOffChangedEvent"
-            [maintainAspectRatio]="true"
-            [aspectRatio]="1"
-            [resizeToWidth]="48"
-            [resizeToHeight]="48"
-            format="png"
-            (imageCropped)="imageCropped($event, 'off')"
-            (imageLoaded)="imageLoaded($event)"
-            (cropperReady)="cropperReady()"
-            (loadImageFailed)="loadImageFailed()"
-          ></image-cropper>
-        </div>
-      </div>
     </div>
+
+    <app-step-2
+      *ngIf="isAppLoaded"
+      (assignCropperImageOnBlob)="assignCropperImageBlob($event, 'on')"
+      (assignCropperImageOffBlob)="assignCropperImageBlob($event, 'off')"
+    ></app-step-2>
+
     <div class="row">
-      <div class="col-sm-6 preview_bloc">
-        <!-- <h2>{{ "PREVIEW_BUTTON_ON" | translate }}</h2> -->
-
-        <div class="result_On">
-          <!-- <div class="title">{{ gen.iconName }} On</div> -->
-          <div class="image" id="imageOnU">
-            <!-- style="border-radius:{{ (gen.radiusValue * 48) / 100 }}px;{{
-                gen.border
-              }}" -->
-            <div>
-              <img *ngIf="croppedImageOn" [src]="croppedImageOn" />
-              <!-- <img ng-src="{{ gen.myCroppedImageOn }}" alt="" /> -->
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-6 preview_bloc">
-        <!-- <h2>{{ "PREVIEW_BUTTON_OFF" | translate }}</h2> -->
-
-        <div class="result_Off">
-          <!-- <div class="title">{{ gen.iconName }} Off</div> -->
-          <div class="image" id="imageOffU">
-            <!-- style="border-radius:{{ (gen.radiusValue * 48) / 100 }}px;{{
-                gen.border
-              }}" -->
-            <div>
-              <img *ngIf="croppedImageOff" [src]="croppedImageOff" />
-              <!-- <img ng-src="{{ gen.myCroppedImageOff }}" alt="" /> -->
-            </div>
-          </div>
-        </div>
-      </div>
-
       <div class="col-sm-12" *ngIf="0">
         <h2>
           <em>3.</em> <span translate="IMAGE_SETTINGS">Image settings</span>
