@@ -1,0 +1,26 @@
+name: GitHub Pages
+
+on:
+  push:
+    branches:
+      - master # Set a branch name to trigger deployment
+    paths:
+      - 'angular-17'
+      - '.github/workflows/on-tag-creation-deploy.yml'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-22.04
+    permissions:
+      contents: write
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
+    steps:
+      - name: Build
+        run: cd angular-17 && npm run build
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./angular-17/dist/domoticz_custom_icon_generator/browser

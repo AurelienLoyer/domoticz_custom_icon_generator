@@ -1,0 +1,200 @@
+<main class="main">
+  <header>
+    <a href="/">
+      <img
+        class="logo"
+        src="assets/domoticz-150x150.png"
+        alt=""
+        style="border-radius: 50%"
+      />
+    </a>
+    <h1>Domoticz <span>Custom icon generator</span></h1>
+    <div class="settings">
+      <a href="#" ng-click="gen.changeLanguage('en')"
+        ><img
+          class="flag"
+          src="assets/united_states-national-world.svg"
+          alt="fr flag"
+      /></a>
+      <!-- <a href="#" ng-click="gen.changeLanguage('fr')"
+        ><img class="flag" src="assets/france-national-world.svg" alt="en flag"
+      /></a> -->
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 description" translate="DESCRIPTION">
+        🤖 🆒 Domoticz custom icon generator, help people to generate custom
+        icon, resize image, crop image 🔪, and generate zip folder 📦 to have
+        amazing 🎉 icons in Domoticz app. If you want to contribute to this
+        project:
+        <a
+          target="_blank"
+          href="https://github.com/AurelienLoyer/domoticz_custom_icon_generator"
+        >
+          Github 🐙
+        </a>
+        or contact me on
+        <a target="_blank" href="https://twitter.com/AurelienLoyer">
+          Twitter 🐦
+        </a>
+
+        <br /><br />
+        Enjoy 🤩
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <!-- <h2><em>1.</em> {{ "ICONE_NAME" | translate }}</h2> -->
+        <h2><em>1.</em> Icon name</h2>
+        <input type="text" name="name" [(ngModel)]="iconName" />
+      </div>
+    </div>
+
+    <app-step-2
+      *ngIf="isAppLoaded"
+      (assignCropperImageOnBlob)="assignCropperImageBlob($event, 'on')"
+      (assignCropperImageOffBlob)="assignCropperImageBlob($event, 'off')"
+    ></app-step-2>
+
+    <div class="row">
+      <div class="col-sm-12" *ngIf="0">
+        <h2>
+          <em>3.</em> <span translate="IMAGE_SETTINGS">Image settings</span>
+        </h2>
+        <p translate="WORK_IN_PROGRESS">
+          Work in progress (Border radius,Border...)
+        </p>
+        <div class="row" *ngIf="0">
+          <div class="col-sm-6">
+            <h3>Bord arrondi</h3>
+            <input
+              type="checkbox"
+              name="name"
+              ng-model="gen.activeRadius"
+              ng-change="gen.radiusChange()"
+              id="activeRadius"
+            />
+            <label for="activeRadius">
+              <!-- Bord arrondi de {{ gen.radiusValue }}% --> </label
+            ><br />
+            <input
+              type="range"
+              min="0"
+              max="50"
+              step="5"
+              ng-show="gen.activeRadius"
+              ng-model="gen.radiusValue"
+            />
+          </div>
+          <div class="col-sm-6">
+            <h3>Contour de l'image</h3>
+            <input
+              type="checkbox"
+              name="name"
+              ng-model="gen.activeBorder"
+              ng-change="gen.borderChange()"
+              id="activeBorder"
+            />
+            <label for="activeBorder"
+              >Bordure
+              <!-- value="{{ gen.borderColor }}" -->
+              <input
+                type="color"
+                name="favcolor"
+                ng-model="gen.borderColor"
+                ng-change="gen.borderChange()"
+              />
+              <!-- de {{ gen.borderSize }}px --> </label
+            ><br />
+            <input
+              type="range"
+              min="0"
+              max="10"
+              step="1"
+              ng-show="gen.activeBorder"
+              ng-change="gen.borderChange()"
+              ng-model="gen.borderSize"
+            />
+            <!-- {{ gen.border }} -->
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-12">
+        <h2><em>3.</em> <span translate="FINISH">To finish</span></h2>
+        <button
+          (click)="zip()"
+          type="button"
+          class="btn btn-success"
+          translate="GENERATE_ZIP"
+        >
+          Generate zip
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="icons">
+      <a target="_blank" href="https://twitter.com/AurelienLoyer">
+        <i class="fa fa-twitter-square" aria-hidden="true"></i>
+      </a>
+      <a target="_blank" href="https://github.com/AurelienLoyer">
+        <i class="fa fa-github-square" aria-hidden="true"></i>
+      </a>
+      <a target="_blank" href="http://aurelien-loyer.fr">
+        <i class="fa fa-envelope-square" aria-hidden="true"></i>
+      </a>
+    </div>
+
+    <div id="donate-button-container">
+      <div id="donate-button"></div>
+      <script
+        src="https://www.paypalobjects.com/donate/sdk/donate-sdk.js"
+        charset="UTF-8"
+      ></script>
+      <style>
+        #donate-button {
+          height: 35px;
+          margin-bottom: 40px;
+        }
+      </style>
+      <script>
+        PayPal.Donation.Button({
+          env: "production",
+          hosted_button_id: "A5VMQUSMX2L5S",
+          image: {
+            src: "https://pics.paypal.com/00/s/MjU1ZDFiOGQtMzcwNC00Yzg4LWJlOGMtYWU2MWQzN2RjODIx/file.PNG",
+            alt: "Bouton Faites un don avec PayPal",
+            title: "PayPal - The safer, easier way to pay online!",
+          },
+        }).render("#donate-button");
+      </script>
+    </div>
+  </footer>
+
+  <div class="footer-fix">
+    <div class="copyright">
+      <i class="fa fa-code" aria-hidden="true" title="code"></i> with
+      <i class="fa fa-heart" title="love" aria-hidden="true"></i> by
+      <a target="_blank" href="https://twitter.com/AurelienLoyer"
+        >Aurélien Loyer</a
+      >
+    </div>
+  </div>
+</main>
+
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * The content above * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * * -->
+<!-- * * * * * * * * * * and can be replaced.  * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * End of Placeholder  * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+
+<router-outlet />

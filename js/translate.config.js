@@ -4,7 +4,7 @@ function addTranslateConfig($translateProvider) {
 
   $translateProvider.translations('en', {
     DESCRIPTION: `🤖 🆒 Domoticz custom icon generator, help people to generate custom icon, resize image, crop image 🔪, and generate zip folder 📦 to have amazing 🎉 icons in Domoticz app.
-    If you want to contribute to this project: <a target="_blank" href="https://github.com/T3kstiil3/domoticz_custom_icon_generator">Github 🐙</a> or contact me on <a target="_blank" href="https://twitter.com/AurelienLoyer">Twitter 🐦</a>
+    If you want to contribute to this project: <a target="_blank" href="https://github.com/AurelienLoyer/domoticz_custom_icon_generator">Github 🐙</a> or contact me on <a target="_blank" href="https://twitter.com/AurelienLoyer">Twitter 🐦</a>
     <br><br> Enjoy 🤩`,
     ICONE_NAME: 'Icon name',
     PREVIEW_BUTTON_ON: 'Preview ON button',
@@ -23,7 +23,7 @@ function addTranslateConfig($translateProvider) {
 
   $translateProvider.translations('fr', {
     DESCRIPTION: `🤖 🆒 Domoticz custom icon generator, vous aide à générer des icônes, changer la taille de vos images, recadrer vos images 🔪, et générer un dossier zip 📦 pour avoir des supers icônes 🎉 dans votre application Domoticz.
-    Si vous voulez contribuer au projet: <a target="_blank" href="https://github.com/T3kstiil3/domoticz_custom_icon_generator">Github 🐙</a> ou vous pouvez me contacter sur <a target="_blank" href="https://twitter.com/AurelienLoyer">Twitter 🐦</a>
+    Si vous voulez contribuer au projet: <a target="_blank" href="https://github.com/AurelienLoyer/domoticz_custom_icon_generator">Github 🐙</a> ou vous pouvez me contacter sur <a target="_blank" href="https://twitter.com/AurelienLoyer">Twitter 🐦</a>
     <br><br> Enjoy 🤩`,
     ICONE_NAME: `Nom de l'icone`,
     PREVIEW_BUTTON_ON: 'Aperçu du bouton ON',

@@ -1,0 +1,197 @@
+/* You can add global styles to this file, and also import other style files */
+
+:root {
+    --main-bg-color: #673ab7;
+    --second-bg-color: rgb(75, 34, 148);
+}
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-family: 'Varela Round', sans-serif;
+}
+
+.description {
+    padding: 50px 18%;
+    padding-top: 100px;
+    font-size: 1.2em;
+}
+
+header {
+    background-color: var(--main-bg-color);
+    height: 50px;
+    display: flex;
+    color: white;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 2%;
+    position: fixed;
+    width: 100%;
+    z-index: 9999;
+}
+
+header a {
+    height: 100%;
+}
+
+header .logo {
+    margin-top: 10%;
+    height: 80%;
+    border: 2px solid white;
+}
+
+header h1 {
+    font-size: 1.5em;
+}
+
+.settings .flag {
+    transition: all 0.2s;
+    height: 50px;
+}
+
+.settings .flag:hover {
+    transform: scale(1.1);
+}
+
+h2 {
+    margin: 30px;
+    text-align: left;
+}
+
+h2 em {
+    text-align: center;
+    background-color: var(--main-bg-color);
+    color: white;
+    width: 55px;
+    display: inline-block;
+    font-size: 20px;
+    line-height: 40px;
+}
+
+input[type='text'] {
+    border: 3px solid var(--main-bg-color);
+}
+
+.cropArea {
+    margin: 20px auto;
+    background: #e4e4e4;
+    overflow: hidden;
+    width: 500px;
+    height: 350px;
+}
+
+.result_On,
+.result_Off {
+    width: 390px;
+    height: 130px;
+    margin: 20px auto;
+    position: relative;
+}
+
+.result_On {
+    background-image: url('assets/result_On.png');
+}
+.result_Off {
+    background-image: url('assets/result_Off.png');
+}
+
+.result_On .title,
+.result_Off .title {
+    background-color: #d4e1ed;
+    width: 300px;
+    height: 20px;
+    top: 12px;
+    display: block;
+    text-align: left;
+    position: absolute;
+    left: 20px;
+    font-weight: bold;
+}
+
+.result_On .image,
+.result_Off .image {
+    width: 50px;
+    height: 50px;
+    background-color: #f2f1fa;
+    background-size: cover;
+    position: absolute;
+    top: 37px;
+    left: 12px;
+    text-align: center;
+    overflow: hidden;
+}
+.result_On .image > div,
+.result_Off .image > div {
+    overflow: hidden;
+    width: 48px;
+    height: 48px;
+}
+
+.result_On .image img,
+.result_Off .image img {
+    width: 48px;
+    height: 48px;
+}
+
+.btn-success {
+    background: var(--main-bg-color);
+}
+
+.btn-success:hover {
+    background: var(--second-bg-color);
+}
+
+.preview_bloc h2 {
+    text-align: center;
+}
+
+footer {
+    color: white;
+    margin-top: 100px;
+    padding: 35px;
+    width: 100%;
+    background: var(--main-bg-color);
+}
+
+footer .icons {
+    margin-bottom: 30px;
+    font-size: 2.5em;
+}
+
+footer .icons a {
+    text-decoration: none;
+    padding: 0 20px;
+    color: white;
+}
+
+footer .icons i {
+    transition: all 0.2s;
+}
+
+footer .icons i:hover {
+    transform: scale(1.2);
+}
+
+.footer-fix {
+    width: 100%;
+    position: fixed;
+    z-index: 999;
+    bottom: 0px;
+    color: white;
+    background: var(--main-bg-color);
+    padding: 10px;
+}
+
+.copyright .fa-heart {
+    color: red;
+}
+
+.copyright a {
+    color: black;
+}
+
+.copyright i {
+    padding: 0px 5px;
+}
