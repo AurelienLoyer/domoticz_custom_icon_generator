@@ -1,0 +1,10 @@
+{
+    "name": "domoticz-custom-icon-generator",
+    "version": "1.0.0",
+    "description": "",
+    "scripts": {
+      "ci:dev": "cd angular-17 && npm install && npm run build"     
+    },
+    "author": "AurelienLoyer",
+    "devDependencies": {}
+  }

@@ -16,9 +16,11 @@ jobs:
     concurrency:
       group: ${{ github.workflow }}-${{ github.ref }}
     steps:
-      - name: Build
-        run: cd angular-17 && npm run build
-
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 20.x
+      - run: npm run ci:dev
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
         with:
