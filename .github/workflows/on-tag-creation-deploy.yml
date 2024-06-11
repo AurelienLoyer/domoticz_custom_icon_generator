@@ -1,27 +1,26 @@
-name: Deploy on tag creation 🦇
-'on':
+name: GitHub Pages
+
+on:
   push:
-    paths:
-      - 'rules/firestore.rules'
-      - '.github/workflows/on-tag-creation-deploy.yml'
     branches:
-      - "!*"
-    tags:
-      - "v*"
+      - master # Set a branch name to trigger deployment
+    paths:
+      - 'angular-17'
+      - '.github/workflows/on-tag-creation-deploy.yml'
+
 jobs:
-  build:
-    runs-on: ubuntu-18.04
+  deploy:
+    runs-on: ubuntu-22.04
+    permissions:
+      contents: write
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
     steps:
-      - uses: actions/checkout@v1
-      - name: Use Node.js 8.15.1
-        uses: actions/setup-node@v1
+      - name: Build
+        run: cd angular-17 && npm run build
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v4
         with:
-          node-version: 8.15.1
-      - name: Build and Deploy
-        uses: JamesIves/github-pages-deploy-action@releases/v2
-        env:
-          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-          BASE_BRANCH: master
-          BRANCH: gh-pages
-          FOLDER: dist/ang-website
-          BUILD_SCRIPT: npm install && npm run build -- --prod
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./angular-17/dist/domoticz_custom_icon_generator/browser
