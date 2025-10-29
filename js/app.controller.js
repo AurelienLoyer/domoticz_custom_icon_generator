@@ -137,24 +137,30 @@ function generatorController($scope,toastr,$translate,$location){
                   angular.element(document.querySelector('#zonetest')).append(canvas);
                   var imageOff = canvas.toDataURL("image/png");
 
-                  var zip = new JSZip();
-                  zip.file("icons.txt", vm.iconName+";Button "+vm.iconName+";Icon "+vm.iconName+" generate via "+vm.currentUrl);
-
+                  // savable images
                   var savableOn = new Image();
                   var savableOff = new Image();
                   savableOn.src = imageOn;
                   savableOff.src = imageOff;
-                  var preview = toDataUrl('../img/bouton.png');
 
-                  zip.file(vm.iconName+"48_On.png", savableOn.src.substr(savableOn.src.indexOf(',')+1), {base64: true});
-                  zip.file(vm.iconName+"48_Off.png", savableOff.src.substr(savableOff.src.indexOf(',')+1), {base64: true});
-                  zip.file(vm.iconName+'.png',preview, {base64: true});
+                  // The preview (16x16) must be created async; use toDataUrl callback to get it
+					createPreviewFromDataUrl(imageOn, 16, 16, function(previewDataUrl) {
+					  var zip = new JSZip();
+					  zip.file("icons.txt", vm.iconName+";Button "+vm.iconName+";Icon "+vm.iconName+" generate via "+vm.currentUrl);
 
-                  vm.loader = true;
-                  zip.generateAsync({type:"blob"}).then(function(content) {
-                      vm.loader = false;
-                      saveAs(content, "domoticz_custom_icon_"+vm.iconName+".zip");
-                  });
+					  zip.file(vm.iconName+"48_On.png", savableOn.src.substr(savableOn.src.indexOf(',')+1), {base64: true});
+					  zip.file(vm.iconName+"48_Off.png", savableOff.src.substr(savableOff.src.indexOf(',')+1), {base64: true});
+
+					  if (previewDataUrl) {
+						zip.file(vm.iconName + '.png', previewDataUrl.substr(previewDataUrl.indexOf(',')+1), {base64: true});
+					  }
+
+					  vm.loader = true;
+					  zip.generateAsync({type:"blob"}).then(function(content) {
+						  vm.loader = false;
+						  saveAs(content, "domoticz_custom_icon_"+vm.iconName+".zip");
+					  });
+					});
 
                 })
               }
@@ -173,12 +179,37 @@ function toDataUrl(url, callback, outputFormat){
         var canvas = document.createElement('CANVAS');
         var ctx = canvas.getContext('2d');
         var dataURL;
-        canvas.height = this.height;
-        canvas.width = this.width;
-        ctx.drawImage(this, 0, 0);
-        dataURL = canvas.toDataURL(outputFormat);
-        //callback(dataURL);
+        // set canvas size to desired 16x16 for preview (change if you want a different preview size)
+        canvas.width = 16;
+        canvas.height = 16;
+        // draw image scaled to 16x16
+        ctx.drawImage(this, 0, 0, canvas.width, canvas.height);
+        dataURL = canvas.toDataURL(outputFormat || 'image/png');
+        // call the callback with the generated dataURL
+        if (typeof callback === 'function') {
+          callback(dataURL);
+        }
         canvas = null;
     };
+    img.onerror = function(){
+      // on error call callback with null so caller can handle it
+      if (typeof callback === 'function') {
+        callback(null);
+      }
+    };
     img.src = url;
+}
+// helper: create a small preview from an existing data URL
+function createPreviewFromDataUrl(dataUrl, width, height, cb) {
+  var img = new Image();
+  img.onload = function() {
+    var c = document.createElement('canvas');
+    c.width = width;
+    c.height = height;
+    var ctx = c.getContext('2d');
+    ctx.drawImage(img, 0, 0, width, height);
+    cb(c.toDataURL('image/png'));
+  };
+  img.onerror = function() { cb(null); };
+  img.src = dataUrl;
 }
