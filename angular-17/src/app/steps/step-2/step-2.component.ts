@@ -53,7 +53,6 @@ export class Step2Component {
         } else {
             console.log(event);
         }
-        // event.blob can be used to upload the cropped image
     }
 
     imageLoaded(image: LoadedImage) {
