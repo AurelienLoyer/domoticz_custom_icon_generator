@@ -144,23 +144,23 @@ function generatorController($scope,toastr,$translate,$location){
                   savableOff.src = imageOff;
 
                   // The preview (16x16) must be created async; use toDataUrl callback to get it
-					createPreviewFromDataUrl(imageOn, 16, 16, function(previewDataUrl) {
-					  var zip = new JSZip();
-					  zip.file("icons.txt", vm.iconName+";Button "+vm.iconName+";Icon "+vm.iconName+" generate via "+vm.currentUrl);
+                  createPreviewFromDataUrl(imageOn, 16, 16, function(previewDataUrl) {
+                    var zip = new JSZip();
+                    zip.file("icons.txt", vm.iconName+";Button "+vm.iconName+";Icon "+vm.iconName+" generate via "+vm.currentUrl);
 
-					  zip.file(vm.iconName+"48_On.png", savableOn.src.substr(savableOn.src.indexOf(',')+1), {base64: true});
-					  zip.file(vm.iconName+"48_Off.png", savableOff.src.substr(savableOff.src.indexOf(',')+1), {base64: true});
+                    zip.file(vm.iconName+"48_On.png", savableOn.src.substr(savableOn.src.indexOf(',')+1), {base64: true});
+                    zip.file(vm.iconName+"48_Off.png", savableOff.src.substr(savableOff.src.indexOf(',')+1), {base64: true});
 
-					  if (previewDataUrl) {
-						zip.file(vm.iconName + '.png', previewDataUrl.substr(previewDataUrl.indexOf(',')+1), {base64: true});
-					  }
+                    if (previewDataUrl) {
+                    zip.file(vm.iconName + '.png', previewDataUrl.substr(previewDataUrl.indexOf(',')+1), {base64: true});
+                    }
 
-					  vm.loader = true;
-					  zip.generateAsync({type:"blob"}).then(function(content) {
-						  vm.loader = false;
-						  saveAs(content, "domoticz_custom_icon_"+vm.iconName+".zip");
-					  });
-					});
+                    vm.loader = true;
+                    zip.generateAsync({type:"blob"}).then(function(content) {
+                      vm.loader = false;
+                      saveAs(content, "domoticz_custom_icon_"+vm.iconName+".zip");
+                    });
+                  });
 
                 })
               }
